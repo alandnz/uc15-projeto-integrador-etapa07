@@ -22,10 +22,14 @@ public class ControlePg {
 
             switch (opcao) {
                 case "1":
-                    Programa programa = new Programa();
-                    programa.cadastrar(teclado);
-                    programas.add(programa);
-                    System.out.println("Programa cadastrado com sucesso!" + programa);
+                    try {
+                        Programa programa = new Programa();
+                        programa.cadastrar(teclado);
+                        programas.add(programa);
+                        System.out.println("Programa cadastrado com sucesso!");
+                    } catch (IllegalArgumentException e) {
+                        System.out.println("Erro ao cadastrar programa: " + e.getMessage());
+                    }
                     break;
                 case "2":
                     if (programas.isEmpty()) {

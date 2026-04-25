@@ -16,7 +16,7 @@ public class Programa {
         this.id = id;
         this.nome = nome;
         this.sigla = sigla;
-        this.valorRecebido = valorRecebido;
+        setValorRecebido(valorRecebido);
     }
 
     public int getId() {
@@ -48,6 +48,10 @@ public class Programa {
     }
 
     public void setValorRecebido(float valorRecebido) {
+        if (valorRecebido < 0) {
+            throw new IllegalArgumentException("O valor recebido não pode ser negativo.");
+        }
+
         this.valorRecebido = valorRecebido;
     }
 
@@ -63,8 +67,10 @@ public class Programa {
         this.sigla = teclado.nextLine();
 
         System.out.println("Informe o valor recebido pelo Programa");
-        this.valorRecebido = teclado.nextFloat();
+        float valor = teclado.nextFloat();
         teclado.nextLine();
+
+        setValorRecebido(valor);
     }
 
     @Override
